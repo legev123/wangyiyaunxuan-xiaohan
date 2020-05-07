@@ -1,0 +1,1 @@
+export const GETINDEX = "getIndex"; //获取index数据
