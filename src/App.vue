@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+      <keep-alive>
         <router-view></router-view>
+      </keep-alive>
         <v-footer></v-footer>
   </div>
 </template>
@@ -17,7 +19,7 @@ export default {
 </script>
 
 <style  lang="stylus">
-body,#app{
+html,body,#app{
   width 100%
   height 100%
   margin 0
