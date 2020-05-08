@@ -21,8 +21,6 @@ export default {
       url:'/cateLists',
       method:'get',
       corsUrl:'/4001'
-    },
-
-    
+    }
   }
 }

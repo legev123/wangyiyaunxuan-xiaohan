@@ -10,7 +10,7 @@
         <!-- 顶部header -->
         <div class="indexHeader">
             <!-- 上部分搜索栏 -->
-            <div class="header-top">
+            <div class="header-top" @click="gotoSearch('/search')">
                 <img class="logo" src="../../common/images/logo.png" alt="">
                 <div class="textInput">
                     <div class="iconfont icon-sousuo"></div>
@@ -119,7 +119,10 @@ import {mapActions,mapState} from "vuex";
                 this.navId = id
                 this.navIndex = index
                 this.$router.replace(`/index/categoryItem/${index}`)
-
+            },
+            //跳转至搜索页
+            gotoSearch(path){
+                this.$router.push(path)
             }
         },
         computed:{

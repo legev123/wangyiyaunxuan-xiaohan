@@ -3,7 +3,7 @@
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
-        <v-footer></v-footer>
+        <v-footer v-show="$route.path !== '/search'"></v-footer>
   </div>
 </template>
 
@@ -13,6 +13,10 @@ export default {
   name: 'App',
   components: {
        "v-footer":footer
+  },
+   mounted(){
+    let result = this.$route.path
+    console.log(result);
   }
   
 }

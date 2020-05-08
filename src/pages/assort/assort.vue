@@ -3,18 +3,11 @@
     <div class="assortWrap">
         <div class="assortMain">
             <!-- 头部假搜索 -->
-            <div class="headerSearch">
+            <div class="headerSearch" @click="gotoSearch('/search')">
                 <span class="iconfont icon-Group-"></span>
                 <span class="searchName">搜索商品, 共25499款好物</span>
             </div>
-                <!-- 真正搜索,组件 v-show判断显示 -->
-            <!-- <div class="trueSearch">
-                <div class="trueSearch-box">
-                    <div class="iconfont icon-Group-"></div>
-                    <input type="text" class="inputSearch" placeholder="免费试用">
-                </div>
-                <div class="cancle">取消</div>
-            </div> -->
+               
 
             <!--下半部分-->
             <!-- assort-cateContainer -->
@@ -30,10 +23,6 @@
                             >
                                 {{assortObj.name}}
                             </li>
-                            <!-- <li class="leftItem">假数据</li>
-                            <li class="leftItem">假数据</li>
-                            <li class="leftItem">假数据</li>
-                            <li class="leftItem">假数据</li> -->
                         </ul>
                 </div>
                 <!-- 右侧bs滚动条 -->
@@ -69,6 +58,12 @@ import {GETASSORTCATELIST} from "@/store/mutation_types";
         },
         async mounted(){
             await this[GETASSORTCATELIST]()
+            // let data2 = await this.$http({
+            //     url:"https://m.you.163.com/xhr/search/init.json",
+            //     method:"get"
+            //     })
+            // console.log(data2);
+            
              this.$nextTick(()=>{
                     // 左半部分滑屏
                     new BScroll(this.$refs.bsWrapper,{
@@ -89,6 +84,10 @@ import {GETASSORTCATELIST} from "@/store/mutation_types";
                 this.leftIndex = index
                 //修改动态路由
                 this.$router.replace(`/assort/rightDetail/${id}`)
+            },
+            //跳转至搜索页
+            gotoSearch(path){
+                this.$router.push(path)
             }
         },
         computed:{
@@ -124,31 +123,6 @@ import {GETASSORTCATELIST} from "@/store/mutation_types";
                 .iconfont
                     font-size 27.5px
                     margin-right 10px
-            .trueSearch
-                width 100%
-                height 60px
-                display flex
-                justify-content space-around
-                align-items center
-                .trueSearch-box
-                    display flex
-                    align-items center
-                    width 88%
-                    height 100%
-                    background #ededed 
-                    .iconfont
-                        font-size 27.5px
-                        background #ededed
-                        margin-right 10px
-                        margin-left 20px
-                    .inputSearch
-                        border none
-                        width 550px
-                        height 50px
-                        background #ededed
-                        outline:none
-                .cancle
-                    font-size 30px
             
             .cateContainer
                 width 100%
