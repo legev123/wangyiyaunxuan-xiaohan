@@ -11,12 +11,11 @@ import personal from "@/pages/personal/personal.vue" //个人中心
 export default [
     {   path:"/index",
          component:index,
-        children:[
+         children:[
            { path: "categoryItem/:id",
               component:categoryItem,
               props:true,
-          },
-          {path:"",redirect:"categoryItem/0"}
+          }
         ]
     },
     {   path:"/assort",

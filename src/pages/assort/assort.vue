@@ -30,11 +30,15 @@
                             >
                                 {{assortObj.name}}
                             </li>
+                            <!-- <li class="leftItem">假数据</li>
+                            <li class="leftItem">假数据</li>
+                            <li class="leftItem">假数据</li>
+                            <li class="leftItem">假数据</li> -->
                         </ul>
                 </div>
                 <!-- 右侧bs滚动条 -->
                 <v-rightdetail
-                            v-if="this.assortCateList"
+                            v-if="categoryObj"
                             class="detailBscroll" 
                             :leftItemId="leftItemId" 
                             :leftIndex="leftIndex"
@@ -59,7 +63,7 @@ import {GETASSORTCATELIST} from "@/store/mutation_types";
         },
         data(){
             return{
-                leftItemId:0,
+                leftItemId:11,
                 leftIndex:0
             }
         },
@@ -161,6 +165,7 @@ import {GETASSORTCATELIST} from "@/store/mutation_types";
                         width 100%
                         list-style none
                         padding 0
+                        margin 0
                         .leftItem
                             position relative
                             width 90%
@@ -169,6 +174,8 @@ import {GETASSORTCATELIST} from "@/store/mutation_types";
                             line-height 80px
                             text-align center
                             border-bottom 1px solid #999
+                            &.active
+                                color red
                             &.active:after
                                 content ""
                                 width 6px
@@ -178,6 +185,7 @@ import {GETASSORTCATELIST} from "@/store/mutation_types";
                                 top 16px
                                 margin-top 0
                                 background red
+
                 .detailBscroll
                     width 70%
                     height 100vh
