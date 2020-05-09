@@ -1,5 +1,5 @@
 <template>
-    <div class="searchWrap">
+    <div class="searchWrap" >
         <!-- 真正搜索,组件 判断显示 -->
         <div class="trueSearch">
             <div class="trueSearch-box">
@@ -9,25 +9,14 @@
             <div class="cancle" @click="goback">取消</div>
         </div>
         <!-- 默认热门展示栏 -->
-        <div class="hotSearchWrap">
+        <div class="hotSearchWrap" >
             <!-- 内芯 -->
-            <div class="hotSearchMain">
+            <div class="hotSearchMain" v-if="searchViewInitData && searchViewInitData.data">
                 <!-- 标题 -->
                 <div class="title">热门搜索</div>
                 <!-- 热门内容 -->
                 <div class="hotContent-box">
-                    <div class="hotItem">杭州学生口罩</div>
-                    <div class="hotItem">穿搭</div>
-                    <div class="hotItem">杭州学生口罩</div>
-                    <div class="hotItem">懒人瘦身66折</div>
-                    <div class="hotItem">杭州</div>
-                    <div class="hotItem">杭州学生</div>
-                    <div class="hotItem">杭州学生口罩</div>
-                    <div class="hotItem">穿搭</div>
-                    <div class="hotItem">杭州学生口罩</div>
-                    <div class="hotItem">懒人瘦身66折</div>
-                    <div class="hotItem">杭州</div>
-                    <div class="hotItem">杭州学生</div>
+                    <div class="hotItem" v-for="(item, index) in searchViewInitData.data.hotKeywordVOList" :key="index">{{item.keyword}}</div>
                 </div>
             </div>
         </div>
@@ -36,12 +25,21 @@
 </template>
 
 <script>
+import {SEARCHVIEWINIT} from "@/store/mutation_types";
+import {mapActions,mapState} from "vuex";
     export default {
         name:"search",
         methods:{
+            ...mapActions([SEARCHVIEWINIT]),
             goback(){
                 this.$router.back()
             }
+        },
+        async mounted(){
+            await this[SEARCHVIEWINIT]()
+        },
+        computed:{
+            ...mapState(["searchViewInitData"])
         }
     }
 </script>
@@ -101,7 +99,9 @@
                             font-size 26px
                             padding 5px 13px
                             display: block
-                            border 1px solid red
+                            
+                            &.active
+                                border 1px solid red
             .colorFix
                 width 100%
                 height 100%

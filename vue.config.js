@@ -28,7 +28,23 @@ const px2rem = require('postcss-px2rem')
               pathRewrite:{
                   "^/4001":""
               }
+          },
+          // 值得买接口数据
+          '/topic/v1': {
+            target: 'https://m.you.163.com/topic/v1',
+            changeOrigin: true,
+            pathRewrite:{
+                "^/topic/v1":""
+            }
+        },
+        // 搜索页数据
+        '/xhr/search': {
+          target: 'https://m.you.163.com/xhr/search',
+          changeOrigin: true,
+          pathRewrite:{
+              "^/xhr/search":""
           }
+        }
       }
   }
 }
