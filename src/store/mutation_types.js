@@ -10,4 +10,3 @@ export const VALUEBUYBOTTOMLOADING = "valueBuyBottomloading"  //值得买相关�
 // 搜索
 export const SEARCHVIEWINIT = "searchViewInit"  //搜索相关数据``页面初始化显示
 export const SEARCHKEYWORD = "searchKeyWord"  //搜索相关数据``关键字搜索
-

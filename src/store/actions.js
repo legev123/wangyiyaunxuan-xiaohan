@@ -45,8 +45,9 @@ export default {
           commit(SEARCHVIEWINIT,data)
      },
     //搜索相关数据``关键字搜索,传参 备用
-    async [SEARCHKEYWORD]({commit}){
-     let data  = await http.search.getSearchKeyWord();
-          commit(SEARCHKEYWORD,data)
+    async [SEARCHKEYWORD]({commit},data){
+         console.log(data);
+     let retuslt  = await http.search.getSearchKeyWord(data);
+          commit(SEARCHKEYWORD,retuslt)
      },
 }
