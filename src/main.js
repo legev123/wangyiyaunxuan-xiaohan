@@ -12,9 +12,10 @@ Vue.prototype.$http = http
 
 //引入仓库
 import store from "@/store/index.js"
+
 Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router,
-  store
+  store,
 }).$mount('#app')

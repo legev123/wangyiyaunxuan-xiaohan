@@ -35,5 +35,5 @@ export default [
     {path:"/cart",component:cart},
     {path:"/personal",component:personal},
 
-    {path:'/',redirect: "/assort"}
+    {path:'/',redirect: "/personal"}
 ]

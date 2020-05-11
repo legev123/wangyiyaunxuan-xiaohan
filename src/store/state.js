@@ -8,6 +8,8 @@ export default {
 
     // 值得买相关数据``NAV导航--------------网易接口
     valueBuyNavObj:{},
+    // 计算属性过滤后的NAVLIST
+    navListArr:[],
     // 值得买相关数据``瀑布流首屏--------------网易接口
     valueBuyFirstScreenData:{},
      // 值得买相关数据``触底加载--------------网易接口

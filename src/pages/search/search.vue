@@ -50,7 +50,8 @@ import {mapActions,mapState} from "vuex";
         name:"search",
         data(){
             return{
-                inputSearch:""
+                inputSearch:"",
+                switch:false
             }
         },
         methods:{
@@ -60,13 +61,29 @@ import {mapActions,mapState} from "vuex";
                 this.$router.back()
             },
             async getInputValue(value){
-                if(!value){
-                    return
+                // 如果输入数据,先判断switch是否为true,为false进入判断
+                 if(!this.switch){
+                    // 变为true之后,再输入就不会进入判断
+                     this.switch = true
+                      if(!value){
+                        this.inputSearch=""
+                         this.switch = false
+                        return
+                    }
+                     setTimeout(() => {
+                            this.switch = false
+                        }, 1000); 
+                    this.inputSearch=value
+                     //如果value输入不存在返回
+                       
+                        await this[SEARCHKEYWORD]({
+                            keywordPrefix: value
+                        })
+                        
                 }
-                this.inputSearch=value
-                await this[SEARCHKEYWORD]({
-                    keywordPrefix: value
-                })
+               
+               
+                
             }
         },
         async mounted(){
